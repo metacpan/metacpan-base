@@ -1,0 +1,23 @@
+language: generic
+
+services:
+  - docker
+
+env:
+  global:
+    - DOCKER_IMAGE_NAME=metacpan-base
+
+notifications:
+  irc: "irc.perl.org#metacpan-travis"
+
+# Perform build, make sure to pull image deps and build from the fetched version as cache
+script:
+  - deploy/build.sh
+
+# Deploy this build as a version AND as latest
+# deploy:
+#   - provider: script
+#     script: 
+#       - deploy/push.sh
+#     on:
+#       branch: master
