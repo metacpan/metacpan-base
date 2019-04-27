@@ -4,10 +4,9 @@ FROM perl:${PERL_VERSION} AS build
 WORKDIR /metacpan
 COPY cpanfile cpanfile.snapshot /metacpan/
 
-RUN apt-get update \
-    && apt-get install -y libgmp-dev rsync \
-    && cpanm App::cpm \
-    && cpm install -g Carton \
+# cpm needs Carton::Snapshot to read cpanfile.snapshot
+RUN cpanm App::cpm \
+    && cpm install -g Carton::Snapshot \
     && cpm install -g
 
 FROM perl:${PERL_VERSION}

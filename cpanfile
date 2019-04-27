@@ -1,3 +1,3 @@
-requires 'Moose';
-requires 'Moo';
 requires 'Gazelle';
+requires 'Moo';
+requires 'Moose';
