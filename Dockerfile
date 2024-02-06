@@ -30,6 +30,7 @@ FROM perl:${PERL_VERSION}
 
 RUN --mount=type=cache,target=/var/cache/apt,sharing=private \
 <<EOT /bin/bash -euo pipefail
+    useradd -m metacpan -g users
     apt-get update
     apt-get install -y uwsgi-core
 EOT
