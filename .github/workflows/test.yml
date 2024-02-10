@@ -4,7 +4,7 @@ on: [pull_request, workflow_dispatch]
 jobs:
   docker:
     runs-on: ubuntu-22.04
-    name: Docker Push
+    name: Docker Test
     steps:
       - uses: actions/checkout@v3
       - name: docker build
