@@ -20,9 +20,17 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USER }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
-      - name: Build and push
+      - name: Build and push latest
         uses: docker/build-push-action@v5
         with:
           push: true
           tags: metacpan/metacpan-base:latest
+          platforms: linux/amd64,linux/arm64
+      - name: Build and push latest-slim
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          build-arg:
+            - SLIM_BUILD=1
+          tags: metacpan/metacpan-base:latest-slim
           platforms: linux/amd64,linux/arm64

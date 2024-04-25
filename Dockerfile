@@ -1,4 +1,5 @@
 ARG PERL_VERSION=5.36
+ARG SLIM_BUILD
 
 FROM perl:${PERL_VERSION} AS build-uwsgi
 SHELL [ "/bin/bash", "-euo", "pipefail", "-c" ]
@@ -37,7 +38,7 @@ RUN \
     cpm install -g --show-build-log-on-failure
 EOT
 
-FROM perl:${PERL_VERSION}
+FROM perl:${PERL_VERSION}${SLIM_BUILD:+-slim}
 SHELL [ "/bin/bash", "-euo", "pipefail", "-c" ]
 
 RUN \
