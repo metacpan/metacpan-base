@@ -27,3 +27,11 @@ jobs:
           push: true
           tags: metacpan/metacpan-base:$GITHUB_SHA
           platforms: linux/amd64,linux/arm64
+      - name: Build and push slim
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          build-arg:
+            - SLIM_BUILD=1
+          tags: metacpan/metacpan-base:$GITHUB_SHA-slim
+          platforms: linux/amd64,linux/arm64
