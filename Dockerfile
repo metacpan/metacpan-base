@@ -17,8 +17,7 @@ RUN \
       'libcap-dev (>= 1:2.66)' \
       'libpcre3-dev (>= 2:8.39)' \
       'uwsgi-core (>= 2.0.21)' \
-      'uwsgi-src (>= 2.0.21)' \
-      'inotify-tools (>= 3.22.6.0)'
+      'uwsgi-src (>= 2.0.21)'
 
     /usr/bin/uwsgi --build-plugin "/usr/src/uwsgi/plugins/psgi"
 EOT
@@ -51,7 +50,8 @@ RUN \
     rm -f /etc/apt/apt.conf.d/docker-clean
     apt-get update
     apt-get satisfy -y --no-install-recommends \
-      'uwsgi-core (>= 2.0.21)'
+      'uwsgi-core (>= 2.0.21)' \
+      'inotify-tools (>= 3.22.6.0)'
 EOT
 
 COPY --from=build-uwsgi /psgi_plugin.so /usr/lib/uwsgi/plugins/psgi_plugin.so
