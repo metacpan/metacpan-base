@@ -31,7 +31,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          build-arg:
+          build-args:
             - SLIM_BUILD=1
           tags: metacpan/metacpan-base:$GITHUB_SHA-slim
           platforms: linux/amd64,linux/arm64
