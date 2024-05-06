@@ -51,7 +51,8 @@ RUN \
     apt-get update
     apt-get satisfy -y --no-install-recommends \
       'uwsgi-core (>= 2.0.21)' \
-      'inotify-tools (>= 3.22.6.0)'
+      'inotify-tools (>= 3.22.6.0)' \
+      'dumb-init (>= 1.2.5)'
 EOT
 
 COPY --from=build-uwsgi /psgi_plugin.so /usr/lib/uwsgi/plugins/psgi_plugin.so
