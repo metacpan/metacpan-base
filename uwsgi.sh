@@ -10,7 +10,7 @@ if [[ "$PLACK_ENV" == "development" ]]; then
     fi
     (
         set -m
-        "$script_dir/watcher.sh" "$pid" lib *.conf &
+        "$script_dir/watcher.sh" "$pid" lib *.conf *.yaml &
     )
 fi
 
