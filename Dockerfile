@@ -57,7 +57,7 @@ RUN \
 EOT
 
 COPY --from=build-uwsgi /psgi_plugin.so /usr/lib/uwsgi/plugins/psgi_plugin.so
-COPY --from=build-uwsgi /psgi_plugin.so /usr/lib/uwsgi/plugins/dogstatsd_plugin.so
+COPY --from=build-uwsgi /dogstatsd_plugin.so /usr/lib/uwsgi/plugins/dogstatsd_plugin.so
 COPY --from=build-perl /usr/local/lib/perl5 /usr/local/lib/perl5
 COPY --from=build-perl /usr/local/bin /usr/local/bin
 COPY watcher.sh uwsgi.sh wait-for-it.sh /
