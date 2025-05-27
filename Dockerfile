@@ -20,6 +20,7 @@ RUN \
       'uwsgi-src (>= 2.0.21)'
 
     /usr/bin/uwsgi --build-plugin "/usr/src/uwsgi/plugins/psgi"
+    /usr/bin/uwsgi --build-plugin "https://github.com/DataDog/uwsgi-dogstatsd"
 EOT
 
 FROM perl:${PERL_VERSION} AS build-perl
@@ -56,6 +57,7 @@ RUN \
 EOT
 
 COPY --from=build-uwsgi /psgi_plugin.so /usr/lib/uwsgi/plugins/psgi_plugin.so
+COPY --from=build-uwsgi /psgi_plugin.so /usr/lib/uwsgi/plugins/dogstatsd_plugin.so
 COPY --from=build-perl /usr/local/lib/perl5 /usr/local/lib/perl5
 COPY --from=build-perl /usr/local/bin /usr/local/bin
 COPY watcher.sh uwsgi.sh wait-for-it.sh /
