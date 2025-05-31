@@ -45,7 +45,7 @@ jobs:
             ${{ matrix.slim && 'suffix=-slim' || '' }}
           tags: |
             type=sha,format=long,priority=2000,enable={{is_default_branch}}
-            type=raw,value={{branch}}-{{date 'YYYMMDD-HHmmss'}},priority=1000,enable=${{ startsWith(github.ref, 'refs/heads/' }}
+            type=raw,value={{branch}}-{{date 'YYYMMDD-HHmmss'}},priority=1000,enable=${{ startsWith(github.ref, 'refs/heads/' ) }}
             type=ref,event=branch
             type=ref,event=pr
             type=raw,value=latest,enable={{is_default_branch}}
