@@ -20,6 +20,7 @@ jobs:
           docker_hub_password: ${{ secrets.DOCKER_HUB_TOKEN }}
           ghcr_username: ${{ github.repository_owner }}
           ghcr_password: ${{ secrets.GITHUB_TOKEN }}
+          platforms: linux/amd64,linux/arm64
       - uses: metacpan/metacpan-actions/docker-build-push@master
         id: build-push
         with:
@@ -27,4 +28,5 @@ jobs:
           docker_hub_password: ${{ secrets.DOCKER_HUB_TOKEN }}
           ghcr_username: ${{ github.repository_owner }}
           ghcr_password: ${{ secrets.GITHUB_TOKEN }}
+          platforms: linux/amd64,linux/arm64
           slim: true
