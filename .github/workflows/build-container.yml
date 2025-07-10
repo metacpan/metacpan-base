@@ -14,7 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: metacpan/metacpan-actions/docker-build-push@master
-        id: build-push
         with:
           docker_hub_username: ${{ secrets.DOCKER_HUB_USER }}
           docker_hub_password: ${{ secrets.DOCKER_HUB_TOKEN }}
@@ -22,7 +21,6 @@ jobs:
           ghcr_password: ${{ secrets.GITHUB_TOKEN }}
           platforms: linux/amd64,linux/arm64
       - uses: metacpan/metacpan-actions/docker-build-push@master
-        id: build-push
         with:
           docker_hub_username: ${{ secrets.DOCKER_HUB_USER }}
           docker_hub_password: ${{ secrets.DOCKER_HUB_TOKEN }}
