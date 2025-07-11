@@ -1,4 +1,3 @@
----
 name: Build and push container
 on:
   push:
@@ -7,6 +6,10 @@ on:
       - prod
       - staging
   workflow_dispatch:
+
+permissions:
+  contents: read
+
 jobs:
   docker:
     runs-on: ubuntu-latest
