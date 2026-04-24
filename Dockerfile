@@ -26,9 +26,6 @@ EOT
 FROM perl:${PERL_VERSION} AS build-perl
 SHELL [ "/bin/bash", "-euo", "pipefail", "-c" ]
 
-WORKDIR /metacpan
-COPY cpanfile cpanfile.snapshot /metacpan/
-
 # cpm needs Carton::Snapshot to read cpanfile.snapshot
 # Carton::Snapshot has no version, but it's packaged with Carton, which does
 RUN \
@@ -36,7 +33,6 @@ RUN \
 <<EOT
     cpm install -g --show-build-log-on-failure \
       Carton~'>= 1.0.35'
-    cpm install -g --show-build-log-on-failure
 EOT
 
 FROM perl:${PERL_VERSION}${SLIM_BUILD:+-slim}
