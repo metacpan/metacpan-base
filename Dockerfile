@@ -55,5 +55,5 @@ EOT
 COPY --from=build-uwsgi /psgi_plugin.so /dogstatsd_plugin.so /usr/lib/uwsgi/plugins/
 COPY --from=build-perl /usr/local/lib/perl5 /usr/local/lib/perl5
 COPY --from=build-perl /usr/local/bin /usr/local/bin
-COPY watcher.sh uwsgi.sh wait-for-it.sh /
+COPY watcher.sh uwsgi.sh /
 COPY uwsgi.ini /etc/uwsgi.ini
